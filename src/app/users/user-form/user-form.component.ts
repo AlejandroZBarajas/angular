@@ -17,12 +17,24 @@ export class UserFormComponent {
   }
 
   @Output() event = new EventEmitter<string>();
+  @Output() newUser = new EventEmitter<IUser>();
 
-  message: string = "Este es un nuevo mensaje"
+  message: string = "Añadido"
 
-  mostrar(): void{
-    console.log(this.user)
-    console.log(this.message)
+  ingresar(): void{
+    if(this.validarData(this.user)){
+      this.newUser.emit(this.user);
+    }else{
+      alert("Datos faltantes")
+    }
+  }
+  validarData(user: IUser):boolean{
+    if(
+      user.name && user.id && user.phone && user.username && user.website
+    ){
+      return true
+    }
+    return false
   }
 
   enviar(){

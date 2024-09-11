@@ -10,6 +10,7 @@ import { IUser } from '../modelo/iuser';
 export class UsersDashboardComponent {
 
   users_list: IUser[] = []
+  locals: IUser [] = []
 
   selected_user:IUser = {
     id: 1,
@@ -19,13 +20,25 @@ export class UsersDashboardComponent {
     website: "akjhbsasays"
   }
 
-  message: string = "Hola Mundo"
+  message: string = "Bienvenido"
 
   constructor(private _service: UserService){
 
     this._service.getAll().subscribe(
       response => this.users_list = response
     )
+
+   }
+
+   ngOnInit(){
+    this._service.getAll().subscribe(
+      response => this.users_list = response
+    );
+   }
+
+   agregar(user: IUser):void{
+    user.id=this.locals.length+1+this.users_list.length;
+    this.locals.push(user);
 
    }
 
@@ -37,4 +50,8 @@ export class UsersDashboardComponent {
     this.message = message
    }
 
+   getAllusers(): IUser[]{
+    return[...this.users_list,...this.locals];
+   }
+   
 }

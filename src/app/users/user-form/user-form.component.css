@@ -1,0 +1,28 @@
+div{
+    position:relative;
+    left:5%;
+    display:inline-block;
+    width:90%;
+    border: solid;
+    border: 1px;
+    border-color: lightgray;
+    border-radius: 8%;
+    align-items: center;
+}
+label,input{
+    padding:5px;
+    display: inline-block;
+    position: relative;
+    min-width: 85%;
+    align-self: center;
+    left:7%;
+}
+button{
+    padding:5px;
+    width:40%;
+    position: relative;
+    margin: 5%;
+
+
+
+}
